@@ -1,51 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <odoo>
-  <data noupdate=0>
-    
-    <record id='issue_ticket_form_view' model='ir.ui.view'>
-      <field name='name'>issue.ticket.tree.view<field/
-      <field name='model'>issue.ticket<field/>
-      <field name='arch' type='xml'>
-        <tree>
-          <field name="date"/>
-          <field name="name"/>
-          <field name="text"/>
-        <tree/>   
-       </field> 
-    </record>
-        
-        
-     <record id="issueticket_form_view" model="ir.ui.view">
-            <field name="name">issue.ticket.form.vew<field>
+    <data noupdate="0">
+
+        <record id='issue_ticket_form_view' model='ir.ui.view'>
+            <field name='name'>issue.ticket.tree.view</field>
+            <field name='model'>issue.ticket</field>
+            <field name='arch' type='xml'>
+                <tree>
+                    <field name="date"/>
+                    <field name="name"/>
+                    <field name="text"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="issue_ticket_form_view" model="ir.ui.view">
+            <field name="name">issue.ticket.form.vew
+            </field>
             <field name="model">issue.ticket</field>
             <field name="arch" type="xml">
                 <form string="Issue Ticket">
-                 <headers>
-                  <button name='_compute_order_id' type='object' string='Recompute Order ID'>
-                  </headers> 
-                 <sheet>
-                    <group>
+                    <headers>
+                        <button name='_compute_order_id' type='object' string='Recompute Order ID'
+                                class="oe_highlight"/>
+                    </headers>
+                    <sheet>
                         <group>
-                          <field name="text"/>
-                          <field name="date"/>
-                          <field name="order_record"/>     
+                            <group>
+                                <field name="text"/>
+                                <field name="date"/>
+                                <field name="order_record"/>
+                            </group>
                         </group>
-                    </group>
-                   </sheet>
+                    </sheet>
 
                 </form>
             </field>
-              </record>
-              
-         <record id="action_view_tickets" model="ir.actions.act_window">
-             <field name="name">Issue tickets</field>
+        </record>
+
+        <record id="action_view_tickets" model="ir.actions.act_window">
+            <field name="name">Issue tickets</field>
+            <field name="type">ir.actions.act_window</field>
             <field name="res_model">issue.ticket</field>
             <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <!--<field name="target">current</field>-->
         </record>
-              
+
         <menuitem id='ticket_root_menu' name='Issue Tickets'/>
-        <menuitem name='Issue Ticket List' parent='ticket_root_menu' action='action_view_tickets'/     
-    
-  <data> 
-<odoo>
+        <menuitem name='Issue Ticket List' parent='ticket_root_menu' action='action_view_tickets'/>
+
+    </data>
+</odoo>
